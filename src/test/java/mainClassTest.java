@@ -1,19 +1,20 @@
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.Test;
-
 import java.util.ArrayList;
 
-public class mainClassTest {
+
+public class mainClassTest extends settingClass{
     @Test
-    public void openSite(){
+    public void openSite()  throws Exception{
+        Alert alert;
+        String alertText;
         ArrayList<WebElement> listTag;
-        WebDriver driver = new ChromeDriver();
         driver.get("https://the-internet.herokuapp.com");
         listTag = new ArrayList<>(driver.findElements(By.tagName("a")));
         listTag.get(8).click();
+
         }
     }
 
