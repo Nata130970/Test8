@@ -4,12 +4,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.Collections;
-import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-
 public class duckClassTest extends settingClass {
-
 
     @Test
     public void duckClickHeaderRubberDarkTest() {    //WPath locators
@@ -90,6 +87,44 @@ public class duckClassTest extends settingClass {
         Collections.sort(nameSort);
         assertTrue(name.equals(nameSort),String.format("Exp: %s Res: %s",nameSort,name));
     }
+    @Test
+    public void duckSortPriceTest() {
+        ArrayList<WebElement> listElements;
+        ArrayList<String> priceSort;
+        ArrayList<String> price = new ArrayList<>();;
+
+        driver.get("https://litecart.stqa.ru/en/");
+
+        driver.findElement(By.xpath("//li[@class='category-1']")).click();
+        driver.findElement(By.xpath("//nav[@class='filter']//*[contains(@class,'button')][text()='Price']")).click();
+
+        listElements = new ArrayList<>(driver.findElements(By.xpath("//ul[@class='listing-wrapper products']/" +
+                "li[@class='product column shadow hover-light']//span[@class='price']")));
+        for (WebElement element :  listElements){
+            price.add(element.getText());
+        }
+        priceSort = (ArrayList)price.clone();
+        Collections.sort(priceSort);
+        assertTrue(price.equals(priceSort),String.format("Exp: %s Res: %s",priceSort,price));
+    }
+    @Test
+    public void duckNewLabelTest() {
+        ArrayList<WebElement> listElements;
+        int countLabel = 0;
+
+        driver.get("https://litecart.stqa.ru/en/");
+        driver.findElement(By.xpath("//li[@class='category-1']")).click();
+        listElements = new ArrayList<>(driver.findElements(By.xpath("//div[@class='sticker new']")));
+        for (WebElement element : listElements) {
+            if (element.getText().equals("NEW"))
+            countLabel++;
+        }
+        assertTrue((listElements.size()==countLabel), String.format("Exp: %s Res: %s",listElements.size(),countLabel));
+
+
+
+    }
+
 
 }
 
