@@ -54,9 +54,11 @@ public class duckClassTest extends settingClass {
 
     @Test
     public void duckSubcategoryTest() {     // Actions
-
+        ArrayList<WebElement> listElements;
         WebElement element;
-        String title;
+        String sticker;
+        int result =0;
+        String name;
 
         driver.get("https://litecart.stqa.ru/en/");
         Actions builder = new Actions(driver);
@@ -64,15 +66,22 @@ public class duckClassTest extends settingClass {
         builder.moveToElement(element).perform();
         element = driver.findElement(By.cssSelector("#site-menu ul > li.category-1 > ul > li.category-2 "));
         builder.click(element).perform();
-        title = driver.findElement(By.cssSelector("#breadcrumbs > .list-horizontal > li:last-child")).getText().trim();
-        assertTrue(title.contains("Subcategory"),"Subcategory not found");
+        listElements = new ArrayList<>(driver.findElements(By.xpath("//li[@class='product row shadow hover-light']")));
+        for (WebElement el : listElements) {
+            name = el.findElement(By.className("name")).getText();
+            sticker = el.findElement(By.xpath(".//div[contains(@class,'sticker')]")).getText();
+            if  ((name.equals("Yellow Duck")) && ( sticker.equals("SALE"))) result++;
+            if  ((name.equals("Green DucK")) && ( sticker.equals("NEW"))) result++;
+            if  ((name.equals("Розовая уточка")) && ( sticker.equals("NEW")))  result++;
+           }
+           assertTrue((result==3),String.format("Result= %s",result));
     }
 
     @Test
     public void duckSortNameTest(){
         ArrayList<WebElement> listElements;
         ArrayList<String> nameSort;
-        ArrayList<String> name = new ArrayList<>();;
+        ArrayList<String> name = new ArrayList<>();
 
         driver.get("https://litecart.stqa.ru/en/");
         driver.findElement(By.xpath("//li[@class='category-1']")).click();
@@ -87,28 +96,28 @@ public class duckClassTest extends settingClass {
         Collections.sort(nameSort);
         assertTrue(name.equals(nameSort),String.format("Exp: %s Res: %s",nameSort,name));
     }
+
     @Test
     public void duckSortPriceTest() {
         ArrayList<WebElement> listElements;
-        ArrayList<String> priceSort;
-        ArrayList<String> price = new ArrayList<>();;
+        ArrayList<Float> priceSort;
+        ArrayList<Float> price = new ArrayList<>();;
 
         driver.get("https://litecart.stqa.ru/en/");
-
         driver.findElement(By.xpath("//li[@class='category-1']")).click();
         driver.findElement(By.xpath("//nav[@class='filter']//*[contains(@class,'button')][text()='Price']")).click();
-
         listElements = new ArrayList<>(driver.findElements(By.xpath("//ul[@class='listing-wrapper products']/" +
                 "li[@class='product column shadow hover-light']//span[@class='price']")));
         for (WebElement element :  listElements){
-
-            price.add(element.getText());
-
+            String e = element.getText();
+            Float a = Float.valueOf(e.substring(0,e.indexOf("€")-1));
+            price.add(a);
         }
         priceSort = (ArrayList)price.clone();
         Collections.sort(priceSort);
         assertTrue(price.equals(priceSort),String.format("Exp: %s Res: %s",priceSort,price));
     }
+
     @Test
     public void duckNewLabelTest() {
         ArrayList<WebElement> listElements;
@@ -122,11 +131,6 @@ public class duckClassTest extends settingClass {
             countLabel++;
         }
         assertTrue((listElements.size()==countLabel), String.format("Exp: %s Res: %s",listElements.size(),countLabel));
-
-
-
     }
-
-
 }
 

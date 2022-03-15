@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
 import static org.testng.Assert.assertEquals;
 
 
@@ -37,11 +36,11 @@ public class mainClassTest extends settingClass{
 
     }
     @Test
-    public void examleWindows()  {
+    public void examleWindows() throws InterruptedException {
         String mainWindow = driver.getWindowHandle();
         String currentWin;
-        WebElement element;
         String name = "Natalia";
+
         driver.get("https://belhard.academy/ru");
         driver.findElement(By.xpath("//div[contains(@class,'t-btn')][text() =' Записаться на курс ']")).click();
         currentWin = driver.getWindowHandles().toArray()[1].toString();
@@ -49,11 +48,15 @@ public class mainClassTest extends settingClass{
         driver.findElement(By.xpath("//a[@class='js-click-stat']")).click();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.findElement(By.xpath("//input[@name='fldname']")).sendKeys(name);
+
 //        new WebDriverWait(driver, Duration.ofSeconds(10))
 //           .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name='fldname']"))).sendKeys("Natalia");
 
+        String readName = driver.findElement(By.name("fldname")).getAttribute("value");
         driver.close();
         driver.switchTo().window(mainWindow);
+        assertEquals(readName,name,String.format("res=%s expRes=%s",readName,name));
+
     }
 }
 
