@@ -15,6 +15,6 @@ public class settingClass {
 
     @AfterMethod
     public void close(){
-        driver.quit();
+      //  driver.quit();
     }
 }

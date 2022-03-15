@@ -101,7 +101,9 @@ public class duckClassTest extends settingClass {
         listElements = new ArrayList<>(driver.findElements(By.xpath("//ul[@class='listing-wrapper products']/" +
                 "li[@class='product column shadow hover-light']//span[@class='price']")));
         for (WebElement element :  listElements){
+
             price.add(element.getText());
+
         }
         priceSort = (ArrayList)price.clone();
         Collections.sort(priceSort);
