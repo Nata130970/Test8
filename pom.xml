@@ -9,10 +9,13 @@
     <version>1.0</version>
 
     <properties>
+        <Ver>4.1.2</Ver>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
+
     <dependencies>
+
         <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
@@ -24,12 +27,12 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>3.14.0</version>
+            <version>${Ver}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
-            <version>3.14.0</version>
+            <version>${Ver}</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -40,7 +43,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
-            <version>4.1.2</version>
+            <version>${Ver}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

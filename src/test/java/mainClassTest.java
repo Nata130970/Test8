@@ -36,7 +36,7 @@ public class mainClassTest extends settingClass{
 
     }
     @Test
-    public void examleWindows() throws InterruptedException {
+    public void examleWindows()  {
         String mainWindow = driver.getWindowHandle();
         String currentWin;
         String name = "Natalia";
@@ -46,11 +46,11 @@ public class mainClassTest extends settingClass{
         currentWin = driver.getWindowHandles().toArray()[1].toString();
         driver.switchTo().window(currentWin);
         driver.findElement(By.xpath("//a[@class='js-click-stat']")).click();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.findElement(By.xpath("//input[@name='fldname']")).sendKeys(name);
+ //       driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+ //       driver.findElement(By.xpath("//input[@name='fldname']")).sendKeys(name);
 
-//        new WebDriverWait(driver, Duration.ofSeconds(10))
-//           .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name='fldname']"))).sendKeys("Natalia");
+        new WebDriverWait(driver, Duration.ofSeconds(10))
+           .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@name='fldname']"))).sendKeys("Natalia");
 
         String readName = driver.findElement(By.name("fldname")).getAttribute("value");
         driver.close();

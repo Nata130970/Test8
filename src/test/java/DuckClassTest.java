@@ -1,3 +1,5 @@
+import Page.BaseTest;
+import Page.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -6,16 +8,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import static org.testng.Assert.assertTrue;
 
-public class duckClassTest extends settingClass {
+public class DuckClassTest extends BaseTest{
 
-    @Test
-    public void duckClickHeaderRubberDarkTest() {    //WPath locators
-        String title;
-        driver.get("https://litecart.stqa.ru/en/");
-        driver.findElement(By.xpath("//nav[@id='site-menu']/ul/li[@class='category-1']")).click();
-        title=driver.findElement(By.xpath("//div[@id='box-category']/h1[@class='title']")).getText();
-        assertTrue(title.contains("Rubber Ducks"),"Rubber Ducks not found");
-    }
+        @Test
+        public void duckClickHeaderRubberDarkTest() {    //WPath locators
+            String title;
+            driver.get("https://litecart.stqa.ru/en/");
+            driver.findElement(By.xpath("//nav[@id='site-menu']/ul/li[@class='category-1']")).click();
+            title=driver.findElement(By.xpath("//div[@id='box-category']/h1[@class='title']")).getText();
+            assertTrue(title.contains("Rubber Ducks"),"Rubber Ducks not found");
+        }
+
 
     @Test
     public void duckClickHeaderDeliveryInformationTest() {  // CSS locators
