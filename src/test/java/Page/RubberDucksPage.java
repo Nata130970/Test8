@@ -4,6 +4,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -78,17 +80,19 @@ public class RubberDucksPage {
         }
         return price;
     }
-    public void duckNewLabel() {
+    public int[] duckNewLabel() {
         ArrayList<WebElement> listElements;
         int countLabel = 0;
-
+        int[]  Result = new int[2];
         driver.findElement(buttonRubberDarkLocator).click();
         listElements = new ArrayList<>(driver.findElements(stickerNewLocator));
         for (WebElement element : listElements) {
             if (element.getText().equals("NEW"))
                 countLabel++;
         }
-        assertTrue((listElements.size()==countLabel), String.format("Exp: %s Res: %s",listElements.size(),countLabel));
+        Result[0] = listElements.size();
+        Result[1] = countLabel;
+        return Result;
     }
 
 }

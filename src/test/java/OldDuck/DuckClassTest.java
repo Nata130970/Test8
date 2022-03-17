@@ -1,3 +1,5 @@
+package OldDuck;
+
 import Page.BaseTest;
 import Page.HomePage;
 import org.openqa.selenium.By;
@@ -8,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import static org.testng.Assert.assertTrue;
 
-public class DuckClassTest extends BaseTest{
+public class DuckClassTest extends SettingClass{
 
         @Test
         public void duckClickHeaderRubberDarkTest() {    //WPath locators

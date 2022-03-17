@@ -34,6 +34,7 @@
             <artifactId>selenium-chrome-driver</artifactId>
             <version>${Ver}</version>
         </dependency>
+
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
@@ -46,6 +47,7 @@
             <version>${Ver}</version>
             <scope>test</scope>
         </dependency>
+
     </dependencies>
 
 </project>

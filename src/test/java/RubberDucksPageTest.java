@@ -49,10 +49,10 @@ public class RubberDucksPageTest extends BaseTest {
 
     @Test
     public void duckNewLabelTest() {
-        ArrayList<WebElement> listElements;
-        int countLabel = 0;
+        int[]  Result = new int[2];
         RubberDucksPage rubberDucks = new RubberDucksPage(driver);
-        rubberDucks.duckNewLabel();
+        Result = rubberDucks.duckNewLabel();
+        assertTrue(Result[0] == Result[1],String.format("Exp: %s Res: %s ",Result[0],Result[1]));
     }
 
 }

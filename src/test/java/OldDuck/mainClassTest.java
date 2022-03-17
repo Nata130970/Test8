@@ -1,15 +1,22 @@
+package OldDuck;
+
+import Page.BaseTest;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import java.time.Duration;
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
+
 import static org.testng.Assert.assertEquals;
 
 
-public class mainClassTest extends settingClass{
+public class mainClassTest extends SettingClass {
     @Test
     public void openSite()  {
         ArrayList<WebElement> listTag;
@@ -30,9 +37,9 @@ public class mainClassTest extends settingClass{
         element = driver.findElement(By.cssSelector("#tinymce"));
         element.clear();
         element.sendKeys(expMsg);
-        String resMsg = element.getText();
+        String resMsg = element.findElement(By.tagName("p")).getText();
         driver.switchTo().defaultContent();
-        assertEquals(element.getText(),expMsg,String.format("resMsg: %s,expMsg: %s",resMsg,expMsg));
+        assertEquals(resMsg,expMsg,String.format("resMsg: %s,expMsg: %s",resMsg,expMsg));
 
     }
     @Test
@@ -58,5 +65,6 @@ public class mainClassTest extends settingClass{
         assertEquals(readName,name,String.format("res=%s expRes=%s",readName,name));
 
     }
+
 }
 
