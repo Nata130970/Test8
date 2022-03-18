@@ -1,5 +1,6 @@
 package PageObjectStatic;
 import PageObjectStatic.PageStatic.RubberDucksPageStatic;
+import PageObjectStatic.PageStatic.TestBaseStatic;
 import org.testng.annotations.Test;
 import java.util.ArrayList;
 import java.util.Collections;

@@ -1,4 +1,4 @@
-package PageObjectStatic;
+package PageObjectStatic.PageStatic;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
