@@ -1,6 +1,6 @@
 package PageObjectStatic;
 
-import PageStatic.HomePageStatic;
+import PageObjectStatic.PageStatic.HomePageStatic;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import java.util.ArrayList;
