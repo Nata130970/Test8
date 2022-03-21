@@ -11,22 +11,23 @@ import java.util.Properties;
 
 import static org.testng.Assert.assertTrue;
 
-public class HomePageFactoryTest extends TestBaseFactory {
+public class HomePageFactoryTest extends TestBaseFactory{
+
 
     @Test
     public void duckClickRubberDarkTest() {
         String title;
-        WebDriver driver = new ChromeDriver();
+
         HomePageFactory homePage = PageFactory.initElements(driver,HomePageFactory.class);
         title = homePage.duckClickRubberDark();
         assertTrue(title.contains("Rubber Ducks"), "Rubber Ducks not found");
     }
-/*
+
     @Test
     public void duckClickDeliveryInformationTest() {
         String footer = "";
-
-        footer = HomePageStatic.duckClickDeliveryInformation(driver);
+        HomePageFactory homePage = PageFactory.initElements(driver,HomePageFactory.class);
+        footer = homePage.duckClickDeliveryInformation();
         assertTrue(footer.contains("Delivery Information"),"Delivery Information not found");
     }
 
@@ -34,7 +35,8 @@ public class HomePageFactoryTest extends TestBaseFactory {
     public void duckClickTermConditionTest() {
         ArrayList<WebElement> listElements;
         String footer = "";
-        footer = HomePageStatic.duckClickTermCondition(driver);
+        HomePageFactory homePage = PageFactory.initElements(driver,HomePageFactory.class);
+        footer = homePage.duckClickTermCondition();
         assertTrue(footer.contains("Terms & Conditions"),"Terms & Conditions not found");
-    }*/
+    }
 }

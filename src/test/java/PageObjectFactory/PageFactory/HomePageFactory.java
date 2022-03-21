@@ -3,63 +3,60 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
+import org.openqa.selenium.support.FindBys;
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomePageFactory {
+    WebDriver driver;
 
-    @FindBy( xpath=("//nav[@id='site-menu']/ul/li[@class='category-1']"))
+    @FindBy(xpath = "//nav[@id='site-menu']/ul/li[@class='category-1']")
     private WebElement buttonRubberDarkLocator;
 
-    @FindBy ( xpath=("//div[@id='box-category']/h1[@class='title']"))
+    @FindBy(xpath = "//div[@id='box-category']/h1[@class='title']")
     private WebElement titlePageRubberDarkLocator;
 
- //   @FindBy(css=("#site-menu > ul > li"))
- //   private WebElement buttonDeliveryInformationLocator;
-
-//    private static By buttonRubberDarkLocator = By.xpath("//nav[@id='site-menu']/ul/li[@class='category-1']");
-
-    private static By buttonDeliveryInformationLocator = By.cssSelector("#site-menu > ul > li");
+    @FindBys(@FindBy( css = " #site-menu > ul > li"))
+    private List<WebElement> buttonDeliveryInformationLocator;
 
 
+    @FindBys(@FindBy( css = "#breadcrumbs > ul > li"))
+    private List<WebElement> footerModeLocator;
 
-    private static By footerModeLocator = By.cssSelector("#breadcrumbs > ul > li");
-    private static By buttonTermConditionLocator = By.xpath("//li[@class='page-4']");
-//    private static By titlePageRubberDarkLocator = By.xpath("//div[@id='box-category']/h1[@class='title']");
+    @FindBy(xpath="//li[@class='page-4']")
+    private WebElement buttonTermConditionLocator;
 
+
+    public HomePageFactory(WebDriver homePageFactory){
+        this.driver=homePageFactory;
+    }
 
     public String duckClickRubberDark(){
-
         buttonRubberDarkLocator.click();
         return titlePageRubberDarkLocator.getText();
     }
 
-    public String duckClickDeliveryInformation(WebDriver driver) {
+    public String duckClickDeliveryInformation() {
 
-        ArrayList<WebElement> listElements;
         String footer = "";
-        ArrayList<String> listTitle = new ArrayList<>();
 
-        listElements = new ArrayList<>(driver.findElements(buttonDeliveryInformationLocator));
-        for( WebElement element : listElements){
+        for( WebElement element : buttonDeliveryInformationLocator){
             if (element.getText().equals("Delivery Information")) {
                 element.click();
                 break;
             }
         }
-        listElements = new ArrayList<>(driver.findElements(footerModeLocator));
-        for( WebElement element : listElements){
+        for( WebElement element : footerModeLocator){
             footer = footer + " " + (element.getText());
         }
         return footer;
     }
 
-    public  String duckClickTermCondition(WebDriver driver) {    //WPath locators
-        ArrayList<WebElement> listElements;
+    public  String duckClickTermCondition() {    //WPath locators
+
         String footer = "";
-        driver.findElement(buttonTermConditionLocator).click();
-        listElements = new ArrayList<>(driver.findElements(footerModeLocator));
-        for (WebElement element :  listElements){
+        buttonTermConditionLocator.click();
+        for (WebElement element :  footerModeLocator){
             footer = footer + " " + (element.getText());
         }
         return footer;
