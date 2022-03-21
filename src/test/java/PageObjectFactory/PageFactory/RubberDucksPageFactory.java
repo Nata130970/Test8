@@ -78,7 +78,7 @@ public class RubberDucksPageFactory {
 
         buttonRubberDarkLocator.click();
         buttonPriceLocator.click();
-        for (WebElement element :  productsPriceLocator){//div[@class='sticker new']){
+        for (WebElement element :  productsPriceLocator){
             String e = element.getText();
             Float a = Float.valueOf(e.substring(0,e.indexOf("€")-1));
             price.add(a);
