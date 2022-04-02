@@ -9,7 +9,7 @@ import static org.testng.Assert.assertTrue;
 public class duckClassTest extends settingClass {
 
     @Test
-    public void duckClickHeaderRubberDarkTest() {    //WPath locators
+    public void duckClickHeaderRubberDurkTest() {    //WPath locators
         String title;
         driver.get("https://litecart.stqa.ru/en/");
         driver.findElement(By.xpath("//nav[@id='site-menu']/ul/li[@class='category-1']")).click();
@@ -22,7 +22,6 @@ public class duckClassTest extends settingClass {
         ArrayList<WebElement> listElements;
         String footer = "";
 
-        ArrayList<String> listTitle = new ArrayList<>();
         driver.get("https://litecart.stqa.ru/en/");
         listElements = new ArrayList<>(driver.findElements(By.cssSelector("#site-menu > ul > li")));
         for( WebElement element : listElements){
@@ -53,11 +52,11 @@ public class duckClassTest extends settingClass {
     }
 
     @Test
-    public void duckSubcategoryTest() {     // Actions
+    public void clickDuckSubcategoryRubberDurkTest() {     // Actions
         ArrayList<WebElement> listElements;
         WebElement element;
         String sticker;
-        int result =0;
+        int result = 0;
         String name;
 
         driver.get("https://litecart.stqa.ru/en/");
