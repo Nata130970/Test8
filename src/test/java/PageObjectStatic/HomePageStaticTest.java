@@ -9,9 +9,9 @@ import static org.testng.Assert.assertTrue;
 public class HomePageStaticTest extends TestBaseStatic {
 
     @Test
-    public void duckClickRubberDarkTest() {
+    public void duckClickRubberDurkTest() {
         String title;
-        title = HomePageStatic.duckClickRubberDark(driver);
+        title = HomePageStatic.duckClickRubberDurk(driver);
         assertTrue(title.contains("Rubber Ducks"), "Rubber Ducks not found");
     }
 

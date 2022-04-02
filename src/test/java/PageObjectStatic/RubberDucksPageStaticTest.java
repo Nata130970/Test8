@@ -9,7 +9,7 @@ import static org.testng.Assert.assertTrue;
 public class RubberDucksPageStaticTest extends TestBaseStatic {
 
     @Test
-    public void duckSubcategoryTest() {
+    public void clickSubcategoryRubberDucksTest() {
         int result=0;
 
         result = RubberDucksPageStatic.duckSubcategory(driver);

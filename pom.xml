@@ -9,7 +9,7 @@
     <version>1.0</version>
 
     <properties>
-        <Ver>4.1.2</Ver>
+        <seleniumVer>4.1.2</seleniumVer>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
@@ -28,12 +28,12 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-api</artifactId>
-            <version>${Ver}</version>
+            <version>${seleniumVer}</version>
         </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-chrome-driver</artifactId>
-            <version>${Ver}</version>
+            <version>${seleniumVer}</version>
         </dependency>
 
         <dependency>
@@ -45,7 +45,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-support</artifactId>
-            <version>${Ver}</version>
+            <version>${seleniumVer}</version>
             <scope>test</scope>
         </dependency>
 

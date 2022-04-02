@@ -6,29 +6,30 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 
 public class HomePageStatic {
-    WebDriver driver;
 
-    private static By buttonRubberDarkLocator = By.xpath("//nav[@id='site-menu']/ul/li[@class='category-1']");
+    private static By buttonRubberDurkLocator = By.xpath("//nav[@id='site-menu']/ul/li[@class='category-1']");
     private static By buttonDeliveryInformationLocator = By.cssSelector("#site-menu > ul > li");
     private static By footerModeLocator = By.cssSelector("#breadcrumbs > ul > li");
     private static By buttonTermConditionLocator = By.xpath("//li[@class='page-4']");
     private static By titlePageRubberDarkLocator = By.xpath("//div[@id='box-category']/h1[@class='title']");
 
 
-    public static String duckClickRubberDark(WebDriver driver){
+    public static String duckClickRubberDurk(WebDriver driver){
 
-        driver.findElement(buttonRubberDarkLocator).click();
-        return driver.findElement(titlePageRubberDarkLocator).getText();
+        driver.findElement(buttonRubberDurkLocator).click();
+        return getTextElement(titlePageRubberDarkLocator,driver);
+    }
+    private static String getTextElement(By locator, WebDriver driver){
+          return driver.findElement(locator).getText();
     }
 
     public static String duckClickDeliveryInformation(WebDriver driver) {
 
         ArrayList<WebElement> listElements;
         String footer = "";
-        ArrayList<String> listTitle = new ArrayList<>();
 
         listElements = new ArrayList<>(driver.findElements(buttonDeliveryInformationLocator));
-        for( WebElement element : listElements){
+        for(WebElement element : listElements){
             if (element.getText().equals("Delivery Information")) {
                 element.click();
                 break;
